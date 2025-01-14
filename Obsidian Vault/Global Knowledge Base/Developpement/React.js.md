@@ -77,7 +77,7 @@ React generates and then inserts HTML into our webpage's preexisting HTML contai
 
 As a next step, we need to link to our JavaScript file. When using React, typically, we do that within the `head` element.
 
-```jsx
+```html
 <html>
 	<head>
 		<script src="./index.js"></script>
@@ -92,7 +92,7 @@ By specifying `type="module"` in the `<script>` tag, we tell the browser tha
 
 It’s required for React to work correctly.
 
-```jsx
+```html
 <html>
 	<head>
 		<script type="module" src="./index.js"></script>
