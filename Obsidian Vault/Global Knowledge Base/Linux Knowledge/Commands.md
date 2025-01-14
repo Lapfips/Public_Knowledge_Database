@@ -408,7 +408,7 @@ $ cat ~/.ssh/id_ed25519.pub -> https://github.com/settings/keys
 - Set the `.bash_profile` file to login with the passphrase and run all commands
 
 ```shell
-echo "SSH_ENV="$HOME/.ssh/environment"
+echo 'SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
      echo "Initialising new SSH agent..."
@@ -429,7 +429,7 @@ if [ -f "${SSH_ENV}" ]; then
      }
 else
      start_agent;
-fi" > .bash_profile
+fi' > .bash_profile
 
 . .bash_profile
 ```
