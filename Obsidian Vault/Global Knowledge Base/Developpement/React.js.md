@@ -1,4 +1,3 @@
-
 # Introduction
 
 Welcome! **React** is a JavaScript library for creating web apps called single-page applications.
@@ -158,4 +157,169 @@ root.render(<MyComponent />);
 
 # Components
 
+In React, organizing components into their own files is a good practice.
 
+Creating a file per component keeps our project nice and tidy.
+
+We need to import `React` from the React package in every file we use for React.
+
+After we made sure to import `React`, we can create our functional component.
+
+To use the component elsewhere, we need to export it.
+
+We use the default export `export default Greeting` to make the `Greeting` component available in other files.
+
+```jsx
+import React from "react";
+
+const Greeting = () => {
+  return <h1>Hello, there!</h1>;
+};
+
+export default Greeting;
+```
+
+To import the component, we use `import` followed by its name, then the path to the file after the `from` keyword.
+
+`./` means _the current folder_ in a file path. It tells the code to look for the file in the same folder as the current file.
+
+Lastly, we can render the component in the `root` element.
+
+However, we can create as many components as we want.
+
+For example, we can create a `Greeting` component next to our `App` component. We do this in another file to keep everything nice and tidy.
+
+```jsx
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+root.render(<App />);
+```
+
+```jsx
+import React from "react";
+
+const App = () => {
+  return <h1>Welcome to my React app!</h1>;
+};
+
+export default App;
+```
+
+```jsx
+import React from "react";
+
+const Greeting = () => {
+  return <h1>Hello, there!</h1>;
+};
+
+export default Greeting;
+```
+
+We can now, use the new `Greeting` component inside the `App` component.
+
+If we want to use a component from another file, we must import it via the `import` statement we already know.
+
+Every component can only return one element. If we want to include the new component, we must wrap the existing JSX in an element.
+
+Add a `div` element around the JSX that the component returns.
+
+```jsx
+import React from "react";
+import Greeting from "./Greeting";
+
+const App = () => {
+	return (
+		<div>
+			<h1>Welcome to my React app!</h1>
+		</div>
+	);
+};
+
+export default App;
+```
+
+If we return more than one line of JSX, we wrap the returned JSX inside parentheses.
+
+If we return a wrapper element, like the `div` element, we can add as many elements as we want inside.
+
+It's time to add the `Greeting` component. We add it like any other element.
+
+Add the imported `Greeting` element to display the `Greeting` component inside the `App` component.
+
+```jsx
+import React from "react";
+import Greeting from "./Greeting";
+
+const App = () => {
+	return (
+	    <div>
+			<h1>Welcome to my React app!</h1>
+		    <p>I'm happy that you are here.</p>
+		    <Greeting />
+		</div>
+	);
+};
+
+export default App;
+```
+
+A component is a building block, just like an element. We can add a component as often as we want.
+
+The `App` component can display the `Greeting` component as often as we want.
+
+We can also put multiple components into one file.
+
+If we want to use a component that was defined in the same file, we can use it directly.
+
+Components are like the building blocks we use to build our React app, so we can use them as often as we want.
+
+We can also export multiple classes using **named exports** instead of a default export.
+
+We put the `export` keyword in front of every component we want to export.
+
+```jsx
+import React from "react";
+
+export const Article = () => {
+	return (
+		<div>
+			<h2>Loading Article...</h2>
+			<p>Content is on its way. Please wait.</p>
+		</div>
+	);
+};
+```
+
+To import multiple named exports, we list each item we want to import in curly braces.
+
+We can also decide to import only one of the exported components.
+
+When we export multiple components, we can also choose to make one of the exports the default export.
+
+To import a named export alongside a default exported component, we list them in curly braces and add them to the same import statement.
+
+Alongside the `Header` component, import the `Recipe` component as a named export from the `Components` file.
+
+```jsx
+import React from "react";
+import Header, { Recipe } from "./Components";
+
+const App = () => {
+	return (
+		<div>
+			<Header />
+			<Recipe />
+		</div>
+	);
+};
+
+export default App;
+```
+
+We can ignore the default export and import only named exports instead.
+
+# Project - React Basics 1
