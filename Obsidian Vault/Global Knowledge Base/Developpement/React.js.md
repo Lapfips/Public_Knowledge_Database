@@ -322,4 +322,135 @@ export default App;
 
 We can ignore the default export and import only named exports instead.
 
-# Project - React Basics 1
+# JSX
+
+We use JSX to create HTML-like code in JavaScript when using React. It looks and feels like HTML, but it’s actually JavaScript.
+
+JSX is so helpful because it makes our components more readable and familiar.
+
+JSX uses syntax that is almost identical to HTML. HTML elements are created in JSX as they are in HTML.
+
+We can only return one element when creating a component using JSX.
+
+However, we can add multiple elements inside a `div` element and return the `div` element.
+
+We can either directly return a tag or use parentheses `()` to return a multiple-line JSX snippet.
+
+If the JSX spans multiple lines, it’s better to wrap it in parentheses for clarity.
+
+If we return a single line, we can just add the JSX after the `return` statement to return it.
+
+Even though JSX looks like HTML, it’s actually JavaScript under the hood. Using JavaScript to define our layout comes with some benefits.
+
+Like in plain JavaScript, we can perform calculations in JSX.
+
+Any such embedded expressions need to go between curly braces `{}`.
+
+```jsx
+const App = () )> {
+	return <h1> {15 + 27} </h1>;
+};
+```
+
+But there's much more than simple calculation. JSX gives us the full power of JavaScript, and we can also reference variables inside JSX.
+
+For example, we can display variables inside an embedded expression.
+
+```jsx
+const name ) "Alice";
+
+const App = () )> {
+	return <h1> {name} </h1>;
+};
+```
+
+We can perform calculations, reference variables, or use any other valid JavaScript expression inside the curly braces.
+
+When using JSX, we can use all the tags we already know from regular HTML, including `<div>`, `<h1>`, `<p>`, and `<footer>`.
+
+Some elements are self-closing, which means they only have a single tag that ends with a slash `/`.
+
+Unlike HTML, JSX requires any self-closing tag to end with a slash `/`.
+
+We can also store JSX inside a variable.
+
+This is useful when you want to write JSX in some part of your code and then refer to it somewhere else in a more readable way.
+
+We can also reference other JSX elements using a JSX expression with curly braces `{}`
+
+To include multiple JSX expressions within a single component, we need to use curly braces for each expression.
+
+We can even use embedded expressions to pass values into a JSX element's attributes.
+
+Embedded expressions are a powerful tool in our React toolkit and allow for nifty interactions with your app's user interface.
+
+# Properties
+
+In React, properties, or props for short, are a way to pass data to a component.
+
+They allow components to be dynamic and customizable.
+
+So far, we've created components without passing any arguments, meaning they always display the same static content.
+
+However, to make components more dynamic, we can pass `props` as arguments to the components to customize what they show.
+
+```jsx
+const Greeting = (props) => {};
+```
+
+We pass one argument, `props`, representing an object that holds all the data passed to the component in one place.
+
+In the component, we access props as we access any passed parameters.
+
+As `props` is an object, we can access the properties of that object.
+
+To access the name, we use `props.name`.
+
+We can also use props inside JSX.
+
+Display the name by accessing the `name` property of the `props` object inside the curly braces by coding `props.name`.
+
+```jsx
+const Greeting = (props) => {
+	return <h1>Hi, {props.name}!</h1>;
+};
+```
+
+When using JavaScript inside JSX, we need to put the JavaScript inside curly braces.
+
+To pass a property to a component, add it as an attribute in the component’s tag, similar to setting attributes in HTML.
+
+First, define the attribute's name, then assign it a value inside quotes.
+
+We're not limited to only passing one property. If we want to pass multiple properties, we can do so.
+
+We can access every passed property as we've done before.
+
+If we pass multiple properties, they become part of the `props` object, allowing us to access each one through it.
+
+Log the `props` object to see what properties have been passed and their values.
+
+We can pass other types as properties as well, such as numbers.
+
+When passing non-strings, like numbers, we need to wrap the value in curly braces `{}`.
+
+When accessing a passed property, the type doesn’t matter; whether it’s a number or a string, we access them all by their key.
+
+Passing booleans works similarly.
+
+However, in React, we can't render a boolean directly as a string. We won't see anything if we try to render a boolean value directly.
+
+If we want to render a boolean (or a number) as a string, we can use the `String(value)` to convert a given variable called `value` to a string.
+
+Use the `String` function and pass `props.nice` as the argument to get a string back that we can display.
+
+```jsx
+const Greeting = (props) => {
+	return (
+		<div>
+			<p>Are you nice? {String(props.nice)}</p>
+		</div>
+	);
+};
+```
+
