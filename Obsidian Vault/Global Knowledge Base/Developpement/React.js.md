@@ -454,3 +454,124 @@ const Greeting = (props) => {
 };
 ```
 
+# Buttons
+
+Let's explore how to make our React apps more interactive.
+
+First, add a button with some text.
+
+```jsx
+const App = () => {
+	return (
+		<div>
+			<h1>Click the button</h1>
+			<button>Click me</button>
+		</div>
+	);
+};
+```
+
+We can add the `onClick` event handler to handle clicks on the button.
+
+In React, it follows camelCase, so it becomes `onClick`. This is slightly different from the HTML/JavaScript click handler `onclick`.
+
+To run JavaScript, we add an embedded expression.
+
+To call a function, we need to reference it without parentheses. First, we define an arrow function and assign it to a variable.
+
+We then pass that variable to `onClick` as a reference, so the function runs when the button is clicked.
+
+We can also run JavaScript directly inside the embedded expression.
+
+However, it's executed without clicking the button because the function is called immediately instead of being passed as an event handler.
+
+This is usually not what we want. To avoid this, we wrap the code in an arrow function.
+
+The arrow function doesn’t run right away. It waits until the event triggers it. Now, the code will be executed on button click.
+
+# State
+
+Often, we need to remember certain things. Like how many times a button has been clicked.
+
+We'll now learn about **state**, a special way in React to make components remember values.
+
+To render JavaScript, we need an embedded expression.
+
+We use state to make React components remember values between renders, like tracking how many times a button has been clicked.
+
+Import `useState` from the `"react"` package. As this is a named export, we use `{ }` to specify which part we want to import.
+
+```jsx
+import React, { useState } from "react";
+```
+
+Defining state looks a bit funky. We use an array structure and put the name of the variable we want to use inside the array.
+
+Next, we assign a value with the `useState` function.
+
+`useState` is a special function (called a hook) in React that allows components to remember and update values over time.
+
+```jsx
+const [count] = useState();
+```
+
+We pass the initial value we want to set as argument to the `useState` function.
+
+We can now display the value, but not update it yet. We define a second array entry, `setCount`, to update a state.
+
+This function is used specifically to change the value of `count` and trigger a re-render.
+
+We can use the `setCount` function to update the `count` variable automatically when we call the function and pass a new value as the argument.
+
+Whenever `setCount` is called the `count` variable is updated and re-rendered.
+
+```jsx
+const App = () => {
+	const [count, setCount] = useState(0);
+
+	const handleClick = () => {
+		console.log("Button clicked");
+		setCount(count+1);
+	};
+
+	return (
+		<div>
+			<p>You clicked the button {count} time(s).</p>
+			<button onClick={handleClick}>Click me</button>
+		</div>
+	);
+};
+```
+
+Hooks, such as `useState,` are crucial parts of React. They allow us to add features to components, making them more powerful and interactive.
+
+Using them allows us to remember things. Such as if we have the light turned on or off.
+
+When using React, we're not limited to one state variable. We can have as many as we want.
+
+We can decide the initial value. It can be anything we want.
+
+We're not limited to numbers when it comes to state variables.
+
+Booleans can also be used for state variables.
+
+We can use a non-state variable and render it.
+
+However, when we update a variable that's also rendered, React doesn't update the HTML it displays.
+
+To ensure React renders the updated HTML, we need to use the setter for the state variable.
+
+Never update a state variable directly, but only through the setter.
+
+State updates are asynchronous. When you call the setter function, React schedules the update but doesn’t apply it immediately.
+
+If we use the updated state value right after calling the setter, it may still reflect the previous value.
+
+We'll soon learn about another hook to observe state changes.
+
+For now, remember that hooks, such as `useState`, run asynchronously. We can't know when the variable is updated and the HTML re-rendered.
+
+# Using Stylesheets
+
+
+
