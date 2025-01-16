@@ -1,4 +1,4 @@
-# Introduction
+# Intro to React
 
 Welcome! **React** is a JavaScript library for creating web apps called single-page applications.
 
@@ -573,5 +573,188 @@ For now, remember that hooks, such as `useState`, run asynchronously. We can't 
 
 # Using Stylesheets
 
+What's a sophisticated React app without some beautiful styling?
 
+Let's dive into how to use CSS to style our single-page applications.
+
+When creating a React app, we can use a normal CSS file. Within that file, we can define any CSS rule that we want.
+
+To apply the CSS, we need to import the CSS file. We do this directly in a component.
+
+We can use CSS rules to target an element with a certain ID, as we would when using CSS with HTML.
+
+Now, let's use a rule to target elements with a particular class attached.
+
+In JSX, we use the keyword `className` to apply a class to an element, similar to the `class` attribute in HTML.
+
+Use `className` to set a CSS class on an element in JSX, just like the class attribute in HTML.
+
+```jsx
+import "./App.css";
+
+const App = () => {
+	return (
+		<div>
+			<h1>Welcome</h1>
+			<div className="box"></div>
+		</div>
+	);
+};
+```
+
+We need to link the stylesheet `index.css` in the HTML because the bundler needs this to load our CSS files properly.
+
+We need to always reference an `index.css` file but should not actually use a file with this name.
+
+```jsx
+<html>
+	<head>
+		<script type="module" src="./index.js"></script>
+		<link rel="stylesheet" href="./index.css">
+	</head>
+	<body>
+		<div id="root">loading</div>
+	</body>
+</html>
+```
+
+When coding React, we need a bundler, a tool that combines all our files to make the app work.
+
+The bundler requires the link to an `index.css` file. However, we don't need to create the file. The bundler does that for us.
+
+When we import a CSS file in one of our files, the styling will be applied to everything that's rendered.
+
+It doesn't matter which component loads the CSS.
+
+To keep the CSS nicely separated, it's best practice to include only a few global styles, such as general styles, in the `App.css` file.
+
+To avoid styling specific components in the `App.css` file, declare only one rule to target the `body`.
+
+```css
+body {
+	font-family: Arial, sans-serif;
+	background: linear-gradient(to bottom, #FFFFFF, #E0E0E0);
+}
+```
+
+It's best to create a CSS file for each component and keep styles scoped to that component.
+
+Once we have a dedicated CSS file for a component, we can use this file to define CSS that is specific for this class.
+
+However, if you import a CSS file in a specific component, the CSS will still be applied globally.
+
+To avoid unwanted side effects in other parts of the app, it's best to use component-specific classes and target those.
+
+In React, we can use the passed properties to adapt a generic component to our liking.
+
+Like changing the size of a box.
+
+When we define a property and pass different values to it, we can use that property to customize the generic component later.
+
+A neat way to adapt the design to our liking is to create classes for our elements based on the passed properties.
+
+Use the passed property `size` in the conditional statement to check which size was passed.
+
+We can then adapt the value of the string of the `boxClass` variable.
+
+The `boxClass` variable holds either only the standard `box` class or `box` and a more specific size class.
+
+```jsx
+import React from "react";
+import "./Box.css";
+
+cosnt Bot = (props) => {
+	let boxClass = "box";
+
+	if (props.size === "small") {
+		boxClass = "box box--small";
+	} else if (props.size === "medium") {
+		boxClass = "box box--medium";
+	} else if (props.size === "large") {
+		boxClass = "box box--large";
+	}
+
+	return (
+		<div className={boxClass}>
+			<span>{props.size}</span>
+		</div>
+	);
+};
+
+export default Box;
+```
+
+We can also use a shorter version using template literals and string interpolation.
+
+```jsx
+const Box = (props) => {
+	return (
+		<div className={'box box--${props.size}'}>
+			<span>{props.size}</span>
+		</div>
+	);
+};
+```
+
+Another great way to create CSS classes on the fly is to use state variables.
+
+Use string interpolation to construct the individual classes based on the state variable `mode`.
+
+```jsx
+const App = () => {
+	const [mode, setMode] = useState("light");
+
+	const toggleTheme = () => {
+		if (mode === "light") {
+			setMode("dark");
+		} else {
+			setMode("light");
+		}
+	};
+
+	return (
+		<div id="app-wrapper" className={'theme-${mode}'}>
+			<h1>Welcome to my page</h1>
+			<p>Do you want it like this?</p>
+			<button onClick={toggleTheme}>Change Theme</button>
+		</div>
+	);
+};
+```
+
+# Using Style Properties
+
+Like HTML + CSS, we can use the style property to style specific elements inline without using a dedicated CSS file.
+
+We can do the same in React.
+
+Unlike in HTML, the `style` property doesn't expect a string but an object.
+
+We pass an object that includes the styling rules.
+
+Note the `{{` and `}}` is a combination of a JSX expression and an object.
+
+The rules are defined as an object with key-value pairs.
+
+If we want to add multiple rules, we separate them by comma.
+
+Remember, this is a JavaScript object, as you have seen and used many times before.
+
+Since we use a JavaScript object, we use camel case instead of hyphens.
+
+We can also define the object first and pass a reference to the `style` property.
+
+```jsx
+const App = () => {
+	const buttonStyle = {color:"white", backgroundColor:"red"};
+	return (
+		<div>
+			<h1>Click the button</h1>
+			<button style={buttonStyle}>Click me</button>
+		</div>
+	);
+};
+```
+
+# React Essentials
 
