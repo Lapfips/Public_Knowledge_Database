@@ -756,5 +756,73 @@ const App = () => {
 };
 ```
 
-# React Essentials
+# Conditional Rendering
+
+React allows us to change what we display based on the code and the user's input.
+
+Rendering JSX based on certain conditions is called **conditional rendering**.
+
+We can use an `if/else` statement to introduce JavaScript logic into JSX and control what is rendered based on a condition.
+
+We use embedded expressions to embed the JSX into other JSX codes.
+
+This is useful if we want to control smaller dynamic elements while keeping the greater JSX structure intact.
+
+Conditional statements become more relevant when working with properties.
+
+If we don't hardcode a value we test against but pass it as a property, we make the component reusable and useful for other components.
+
+When working with properties, we can go further with conditional rendering to make the component as flexible as possible.
+
+Let's check out how we can decide whether to render something or avoid it.
+
+If we don't want to show an element in a certain condition, we can set it to `null`.
+
+The embedded expression will always render the content that's referenced by the `element` variable.
+
+However, when this variable holds the value `null`, there is nothing to display.
+
+This concept becomes more relevant when working with state variables.
+
+If we transform `showSecret` into a state variable, we can toggle whether to render it with the click of a button.
+
+When working with properties, we can go further with conditional rendering to make the component as flexible as possible.
+
+Rendering JSX based on certain conditions is called **conditional rendering**.
+
+We can move the conditional statement inside the embedded
+
+We can shorten this by using the AND operator to render the `prize` variable only if the condition on the left side evaluates as `true`.
+
+```jsx
+const App = () => {
+	const [prize, setPrize] = userState(undefined);
+
+	const openMysteryBox = () => {
+		setPrize("Your gift");
+	};
+
+	return (
+		<div>
+			<h1>Mystery Box :</h1>
+			<p>{prize !== undefined && prize}</p>
+			<button onClick={openMysteryBox}>Open</button>
+		</div>
+	);
+};
+```
+
+We don't have to render a variable that references JSX. We can directly render JSX, too.
+
+We can also use the logical OR operator. This operator will first try to render the left side.
+
+If the left side evaluates as `falsy`, which are `false`-like values, it will render the right side.
+
+If the left side is `false`, `null`, `undefined`, `0`, `NaN`, or an empty string, the OR operator will return the right side to be rendered.
+
+Set the initial value to an empty string instead of `undefined`.
+
+We can go one step further and only put the variable inside an embedded expression.
+
+If the variable is not `falsy`, React will render it.
 
