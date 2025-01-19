@@ -826,3 +826,156 @@ We can go one step further and only put the variable inside an embedded expressi
 
 If the variable is not `falsy`, React will render it.
 
+A common use case for conditional rendering is to display parts of the elements based on a user action or the result of a calculation.
+
+If we use the AND operator, we can pass a multi-line JSX snippet with one parent and multiple child elements.
+
+```jsx
+import React, { useState } from "react";
+
+const App = () => {
+	const [showMore, setShowMore] = useState(false);
+
+	const toggleContent = () => {
+		setShowMore(!showMore);
+	};
+
+	return (
+		<div>
+			<h1>Our Story</h1>
+			<p>We started with a simple idea.</p>
+			{showMore && (
+				<div>
+				    <p>Over time, we grew, learned, and continued to innovate.</p>
+			        <p>Today, we're excited about what the future holds!</p>
+				</div>
+			)}
+			<button onClick={toggleContent}>
+				{showMore ? "Read Less" : "Read More"}
+		    </button>
+		</div>
+	);
+};
+
+export default App;
+```
+
+We can use multiple embedded expressions for conditional rendering.
+
+```jsx
+const App = () => {
+	const [showMore, setShowMore] = useState(false);
+
+	const toggleContent = () => {
+		setShowMore(!showMore);
+	};
+
+	return (
+		<div>
+			<h1>Our Story</h1>
+			<p>We started with a simple idea.{!showMore && ".."}</p>
+			{showMore && (
+				<div>
+				    <p>Over time, we grew, learned, and continued to innovate.</p>
+			        <p>Today, we're excited about what the future holds!</p>
+				</div>
+			)}
+			<button onClick={toggleContent}>
+				{showMore ? "Read Less" : "Read More"}
+		    </button>
+		</div>
+	);
+};
+```
+
+We can add a third embedded expression that returns different text for the button based on how much we are rendering.
+
+Or hide the button entirely after it is clicked once. The possibilities with embedded expressions and conditional rendering are endless.
+
+This is a bit of a brain-twister. If `showMore` is not `true`, we show the button. As soon as it is `true`, we hide it.
+
+```jsx
+{!showMore && <button onClick={toggleContent}>Read More</button>}
+```
+
+Sometimes, we want to show a radically different UI based on a condition.
+
+Think about a loading state. A loading state might be much, much simpler than the view with all the data loaded and presented.
+
+We can use conditional rendering to display those two states inside an embedded expression.
+
+Based on the `loading` variable, display either a simple loading message or a complex UI with the loaded data.
+
+```jsx
+const App = () => {
+	const [loading, setLoading] = useState(true);
+
+	return (
+		<div>
+			{loading ? (
+				<p>Loading your data ...</p>
+			) : (
+				<div>
+					<h1>Your Data</h1>
+				</div>
+			)}
+		</div>
+	);
+};
+```
+
+Returning early is a common pattern for conditional rendering based on specific states, such as loading, error, or authentication state.
+
+We can use multiple early returns to handle several scenarios in a single component.
+
+First, check if the data is still loading, then check if an error occurred, and finally, return the data.
+
+Another common use case is authentication.
+
+Add a conditional statement to check if the passed property `authenticated` is `false`. If that's the case, return a prompt to log in.
+
+```jsx
+const App = () => {
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(undefined);
+
+	if (!props.authenticated) {
+		return (
+			<div>
+				<h1>Not authenticated</h1>
+				<p>Please log in first</p>
+				<button>Log in</button>
+			</div>
+		);
+	}
+
+	if (loading) {
+		return <p>Loading your data ...</p>;
+	}
+	
+	if (error) {
+		return (
+			<div>
+				<p>Error loading your data.</p>
+				<button>Try again</button>
+			</div>
+		);
+	}
+	
+	return (
+		<div>
+			<h1>Your Data</h1>
+			<p>The first data point ...</p>
+		    <p>We also want to highlight ...</p>
+	    </div>
+	);
+};
+```
+
+# Fragments
+
+
+
+
+
+
