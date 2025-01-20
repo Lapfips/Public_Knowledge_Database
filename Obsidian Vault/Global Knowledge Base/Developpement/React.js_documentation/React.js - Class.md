@@ -974,3 +974,175 @@ const App = () => {
 
 # Fragments
 
+When working with JSX, we can only ever return one element.
+
+We end up wrapping our elements in one parent element, like a `div,` to return them as JSX.
+
+Instead of returning a `div`, we can use React fragments. Fragments let us group multiple elements without adding extra nodes to the DOM.
+
+A fragment is written by `<>` and `</>`.
+
+```jsx
+const App = () => {
+	return (
+		<>
+			<h1>Joke</h1>
+			<p>Why did the developer go broke?</p>
+			<p>Because they used up all their cache!</p>
+		</>
+	);
+};
+```
+
+Fragments are useful when a component needs to return multiple elements, as React components can only return one element by default.
+
+`<>` and `</>` are only the shorthand. We can also use the full `<React.Fragment>` and `</React.Fragment>` syntax.
+
+React fragments are lightweight by design. We can't add attributes like `className` or `style`. However, we can set a `key`.
+
+When we want to set a key, we can't use the shorthand `<>`, but we have to use the `<React.Fragment>` with an explicit `key` prop.
+
+```jsx
+const App = () => {
+	return (
+		<React.Fragment key={key}>
+			<h1>Joke</h1>
+			<p>Why did the developer go broke?</p>
+			<p>Because they used up all their cache!</p>
+		</React.Fragment>
+	);
+};
+```
+
+React requires key props on list items to help it efficiently update and reorder elements without causing issues in the DOM.
+
+Notice we use multiple fragments, all wrapped in one outer fragment, with unique keys for efficient updates and a clean DOM.
+
+# Destructing Properties
+
+Properties (props) make components flexible by allowing us to pass in data.
+
+However, typing `props.propName` every time can get repetitive. There's a better way.
+
+Destructuring properties helps make code cleaner and more readable by directly extracting values passed to components.
+
+Destructuring lets us extract properties directly from the function parameters instead of accessing `props.propName`.
+
+```jsx
+const Catchphrase = ({character, phrase}) => {
+	return (
+		<div>
+			<h2>{character}:</h2>
+			<p>"{phrase}"</p>
+		</div>
+	);
+};
+```
+
+Using `{}` in a function parameter allows us to destructure an object, extracting specific properties directly by name.
+
+Inside `{}`, we specify the property names we want to extract, allowing us to access these directly.
+
+Once we have extracted properties, we can use them directly in our component without prefixing them with `props.` each time.
+
+Display first `character` and then `phrase` directly, making the code cleaner and more concise.
+
+Destructuring makes it easy to access specific properties directly, keeping our code cleaner and reducing repetition when using props.
+
+Instead of destructuring in the function’s arguments, we can do it inside the function body.
+
+This is helpful if we want to separate the destructuring step.
+
+```jsx
+const {name, price} = props;
+```
+
+However, the syntax stays the same whether we use destructing inside the function's argument or outside.
+
+Inside `{}`, we specify the property names we want to extract, allowing us to access these directly.
+
+# Default Properties
+
+Properties are a powerful tool we relly on heavily when working with React.
+
+If some properties aren’t provided and we don’t handle this case, we may get unexpected output, like an empty element.
+
+If a property is not provided, nothing will be rendered.
+
+If we try to print a non-existing property, it will print `undefined`.
+
+Undefined values inside JSX don't render.
+
+We can use conditional rendering to show only the whole element or section if the property is provided.
+
+Use an embedded expression with conditional rendering to avoid rendering a broken UI if `level` is not provided.
+
+```jsx
+const Profile = (props) => {
+	console.log(porps.level);
+
+	return (
+		<div>
+			<h2>Player: {props.name}</h2>
+			{props.level && <p>Level: {props.level}</p>}
+		<div>
+	);
+};
+```
+
+To handle not provided props gracefully, we can set a fallback directly in the JSX using a ternary operator.
+
+Code the inline if-else to render `level` if it was provided. Otherwise, render `"Unranked"` as default value.
+
+```jsx
+const Profile = (props) => {
+	return (
+		<div>
+			<h2>Player: {props.name}</h2>
+			<p>Level: {prop.level ? props.level : "Unranked"}</p>
+		</div>
+	);
+};
+```
+
+When properties aren’t provided, default values ensure components still display correctly, providing a reliable fallback.
+
+Let’s look at a cleaner, more efficient way to set and use default values.
+
+A neat way to set default properties and keep the JS clean is to use object destructuring.
+
+We assign a default value inside `{}` that will be taken if no property will be passed with that name.
+
+```jsx
+const Guest = ({name = "Guest"}) => {
+	return (
+		<div>
+			<h2>Welcome, {name}!</h2>
+			<p>Hope you have a great experience!</p>
+		</div>
+	);
+};
+```
+
+We can set default values for every single property we expect.
+
+Whenever a value is provided, it will be used. If we don't receive one, the default value will be the fallback.
+
+No matter where we desctruct the properties, we can set default values.
+
+```jsx
+const Guest = (props) => {
+	const { name="Guest", room="Standard"} = props;
+
+	return (
+		<div>
+			<h2>Welcom, {name}!</h2>
+			<p>Booked room: {room}</p>
+			<p>We hope you enjoy your stay!</p>
+		</div>
+	);
+};
+```
+
+# Complex Properties
+
