@@ -8,12 +8,11 @@ React simplifies the development of web apps by allowing us to break code into r
 
 You can picture those components as reusable blocks of code like bricks that you can use to build your application.
 
-Let's look at a simple example, which returns _Welcome to React_.
-
+Let's look at a simple example, which returns *Welcome to React*.
 
 ```jsx
 function Welcome() {
-	return "Welcome to React";
+  return "Welcome to React";
 }
 ```
 
@@ -25,11 +24,11 @@ However, both do the same thing. They're just different ways of writing a functi
 
 ```jsx
 const WelcomeToTheNewWorld = () => {
-	return "Hello, new world";
+  return "Hello, new world";
 };
 
 function WelcomeToTheOldWorld() {
-	return "Hello, old world";
+  return "Hello, old world";
 }
 ```
 
@@ -55,7 +54,7 @@ We can create a component that returns an HTML heading with a certain text.
 
 ```jsx
 const WelcomeComponent = () => {
-	return <h1>Hello, world</h1>
+  return <h1>Hello, world</h1>;
 };
 ```
 
@@ -69,9 +68,9 @@ React generates and then inserts HTML into our webpage's preexisting HTML contai
 
 ```html
 <html>
-	<body>
-		<div id="root">loading</div>
-	</body>
+  <body>
+    <div id="root">loading</div>
+  </body>
 </html>
 ```
 
@@ -79,12 +78,12 @@ As a next step, we need to link to our JavaScript file. When using React, typica
 
 ```html
 <html>
-	<head>
-		<script src="./index.js"></script>
-	</head>
-	<body>
-		<div id="root">loading</div>
-	</body>
+  <head>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div id="root">loading</div>
+  </body>
 </html>
 ```
 
@@ -94,18 +93,18 @@ It’s required for React to work correctly.
 
 ```html
 <html>
-	<head>
-		<script type="module" src="./index.js"></script>
-	</head>
-	<body>
-		<div id="root">loading</div>
-	</body>
+  <head>
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <div id="root">loading</div>
+  </body>
 </html>
 ```
 
 That’s it! When working with React, we typically only need a very basic HTML page.
 
-React will render the components we add inside the `div` element with the ID `"root"` and replace the _loading_ placeholder.
+React will render the components we add inside the `div` element with the ID `"root"` and replace the *loading* placeholder.
 
 After setting up the basic HTML code, we switch to our `index.jsx` file to work on the React code.
 
@@ -181,7 +180,7 @@ export default Greeting;
 
 To import the component, we use `import` followed by its name, then the path to the file after the `from` keyword.
 
-`./` means _the current folder_ in a file path. It tells the code to look for the file in the same folder as the current file.
+`./` means *the current folder* in a file path. It tells the code to look for the file in the same folder as the current file.
 
 Lastly, we can render the component in the `root` element.
 
@@ -232,11 +231,11 @@ import React from "react";
 import Greeting from "./Greeting";
 
 const App = () => {
-	return (
-		<div>
-			<h1>Welcome to my React app!</h1>
-		</div>
-	);
+  return (
+    <div>
+      <h1>Welcome to my React app!</h1>
+    </div>
+  );
 };
 
 export default App;
@@ -255,13 +254,13 @@ import React from "react";
 import Greeting from "./Greeting";
 
 const App = () => {
-	return (
-	    <div>
-			<h1>Welcome to my React app!</h1>
-		    <p>I'm happy that you are here.</p>
-		    <Greeting />
-		</div>
-	);
+  return (
+    <div>
+      <h1>Welcome to my React app!</h1>
+      <p>I'm happy that you are here.</p>
+      <Greeting />
+    </div>
+  );
 };
 
 export default App;
@@ -285,12 +284,12 @@ We put the `export` keyword in front of every component we want to export.
 import React from "react";
 
 export const Article = () => {
-	return (
-		<div>
-			<h2>Loading Article...</h2>
-			<p>Content is on its way. Please wait.</p>
-		</div>
-	);
+  return (
+    <div>
+      <h2>Loading Article...</h2>
+      <p>Content is on its way. Please wait.</p>
+    </div>
+  );
 };
 ```
 
@@ -309,12 +308,12 @@ import React from "react";
 import Header, { Recipe } from "./Components";
 
 const App = () => {
-	return (
-		<div>
-			<Header />
-			<Recipe />
-		</div>
-	);
+  return (
+    <div>
+      <Header />
+      <Recipe />
+    </div>
+  );
 };
 
 export default App;
@@ -357,7 +356,7 @@ But there's much more than simple calculation. JSX gives us the full power of Ja
 For example, we can display variables inside an embedded expression.
 
 ```jsx
-const name ) "Alice";
+const name = "Alice";
 
 const App = () )> {
 	return <h1> {name} </h1>;
@@ -412,7 +411,7 @@ Display the name by accessing the `name` property of the `props` object insi
 
 ```jsx
 const Greeting = (props) => {
-	return <h1>Hi, {props.name}!</h1>;
+  return <h1>Hi, {props.name}!</h1>;
 };
 ```
 
@@ -446,11 +445,11 @@ Use the `String` function and pass `props.nice` as the argument to get a str
 
 ```jsx
 const Greeting = (props) => {
-	return (
-		<div>
-			<p>Are you nice? {String(props.nice)}</p>
-		</div>
-	);
+  return (
+    <div>
+      <p>Are you nice? {String(props.nice)}</p>
+    </div>
+  );
 };
 ```
 
@@ -462,12 +461,12 @@ First, add a button with some text.
 
 ```jsx
 const App = () => {
-	return (
-		<div>
-			<h1>Click the button</h1>
-			<button>Click me</button>
-		</div>
-	);
+  return (
+    <div>
+      <h1>Click the button</h1>
+      <button>Click me</button>
+    </div>
+  );
 };
 ```
 
@@ -527,19 +526,19 @@ Whenever `setCount` is called the `count` variable is updated and re-rendere
 
 ```jsx
 const App = () => {
-	const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
-	const handleClick = () => {
-		console.log("Button clicked");
-		setCount(count+1);
-	};
+  const handleClick = () => {
+    console.log("Button clicked");
+    setCount(count + 1);
+  };
 
-	return (
-		<div>
-			<p>You clicked the button {count} time(s).</p>
-			<button onClick={handleClick}>Click me</button>
-		</div>
-	);
+  return (
+    <div>
+      <p>You clicked the button {count} time(s).</p>
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  );
 };
 ```
 
@@ -593,12 +592,12 @@ Use `className` to set a CSS class on an element in JSX, just like the class a
 import "./App.css";
 
 const App = () => {
-	return (
-		<div>
-			<h1>Welcome</h1>
-			<div className="box"></div>
-		</div>
-	);
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <div className="box"></div>
+    </div>
+  );
 };
 ```
 
@@ -632,8 +631,8 @@ To avoid styling specific components in the `App.css` file, declare only one r
 
 ```css
 body {
-	font-family: Arial, sans-serif;
-	background: linear-gradient(to bottom, #FFFFFF, #E0E0E0);
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ffffff, #e0e0e0);
 }
 ```
 
@@ -688,11 +687,11 @@ We can also use a shorter version using template literals and string interpolati
 
 ```jsx
 const Box = (props) => {
-	return (
-		<div className={'box box--${props.size}'}>
-			<span>{props.size}</span>
-		</div>
-	);
+  return (
+    <div className={"box box--${props.size}"}>
+      <span>{props.size}</span>
+    </div>
+  );
 };
 ```
 
@@ -702,23 +701,23 @@ Use string interpolation to construct the individual classes based on the state 
 
 ```jsx
 const App = () => {
-	const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("light");
 
-	const toggleTheme = () => {
-		if (mode === "light") {
-			setMode("dark");
-		} else {
-			setMode("light");
-		}
-	};
+  const toggleTheme = () => {
+    if (mode === "light") {
+      setMode("dark");
+    } else {
+      setMode("light");
+    }
+  };
 
-	return (
-		<div id="app-wrapper" className={'theme-${mode}'}>
-			<h1>Welcome to my page</h1>
-			<p>Do you want it like this?</p>
-			<button onClick={toggleTheme}>Change Theme</button>
-		</div>
-	);
+  return (
+    <div id="app-wrapper" className={"theme-${mode}"}>
+      <h1>Welcome to my page</h1>
+      <p>Do you want it like this?</p>
+      <button onClick={toggleTheme}>Change Theme</button>
+    </div>
+  );
 };
 ```
 
@@ -746,13 +745,13 @@ We can also define the object first and pass a reference to the `style` proper
 
 ```jsx
 const App = () => {
-	const buttonStyle = {color:"white", backgroundColor:"red"};
-	return (
-		<div>
-			<h1>Click the button</h1>
-			<button style={buttonStyle}>Click me</button>
-		</div>
-	);
+  const buttonStyle = { color: "white", backgroundColor: "red" };
+  return (
+    <div>
+      <h1>Click the button</h1>
+      <button style={buttonStyle}>Click me</button>
+    </div>
+  );
 };
 ```
 
@@ -796,19 +795,19 @@ We can shorten this by using the AND operator to render the `prize` variable o
 
 ```jsx
 const App = () => {
-	const [prize, setPrize] = userState(undefined);
+  const [prize, setPrize] = userState(undefined);
 
-	const openMysteryBox = () => {
-		setPrize("Your gift");
-	};
+  const openMysteryBox = () => {
+    setPrize("Your gift");
+  };
 
-	return (
-		<div>
-			<h1>Mystery Box :</h1>
-			<p>{prize !== undefined && prize}</p>
-			<button onClick={openMysteryBox}>Open</button>
-		</div>
-	);
+  return (
+    <div>
+      <h1>Mystery Box :</h1>
+      <p>{prize !== undefined && prize}</p>
+      <button onClick={openMysteryBox}>Open</button>
+    </div>
+  );
 };
 ```
 
@@ -834,27 +833,27 @@ If we use the AND operator, we can pass a multi-line JSX snippet with one parent
 import React, { useState } from "react";
 
 const App = () => {
-	const [showMore, setShowMore] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
-	const toggleContent = () => {
-		setShowMore(!showMore);
-	};
+  const toggleContent = () => {
+    setShowMore(!showMore);
+  };
 
-	return (
-		<div>
-			<h1>Our Story</h1>
-			<p>We started with a simple idea.</p>
-			{showMore && (
-				<div>
-				    <p>Over time, we grew, learned, and continued to innovate.</p>
-			        <p>Today, we're excited about what the future holds!</p>
-				</div>
-			)}
-			<button onClick={toggleContent}>
-				{showMore ? "Read Less" : "Read More"}
-		    </button>
-		</div>
-	);
+  return (
+    <div>
+      <h1>Our Story</h1>
+      <p>We started with a simple idea.</p>
+      {showMore && (
+        <div>
+          <p>Over time, we grew, learned, and continued to innovate.</p>
+          <p>Today, we're excited about what the future holds!</p>
+        </div>
+      )}
+      <button onClick={toggleContent}>
+        {showMore ? "Read Less" : "Read More"}
+      </button>
+    </div>
+  );
 };
 
 export default App;
@@ -864,27 +863,27 @@ We can use multiple embedded expressions for conditional rendering.
 
 ```jsx
 const App = () => {
-	const [showMore, setShowMore] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
-	const toggleContent = () => {
-		setShowMore(!showMore);
-	};
+  const toggleContent = () => {
+    setShowMore(!showMore);
+  };
 
-	return (
-		<div>
-			<h1>Our Story</h1>
-			<p>We started with a simple idea.{!showMore && ".."}</p>
-			{showMore && (
-				<div>
-				    <p>Over time, we grew, learned, and continued to innovate.</p>
-			        <p>Today, we're excited about what the future holds!</p>
-				</div>
-			)}
-			<button onClick={toggleContent}>
-				{showMore ? "Read Less" : "Read More"}
-		    </button>
-		</div>
-	);
+  return (
+    <div>
+      <h1>Our Story</h1>
+      <p>We started with a simple idea.{!showMore && ".."}</p>
+      {showMore && (
+        <div>
+          <p>Over time, we grew, learned, and continued to innovate.</p>
+          <p>Today, we're excited about what the future holds!</p>
+        </div>
+      )}
+      <button onClick={toggleContent}>
+        {showMore ? "Read Less" : "Read More"}
+      </button>
+    </div>
+  );
 };
 ```
 
@@ -895,7 +894,9 @@ Or hide the button entirely after it is clicked once. The possibilities with emb
 This is a bit of a brain-twister. If `showMore` is not `true`, we show the button. As soon as it is `true`, we hide it.
 
 ```jsx
-{!showMore && <button onClick={toggleContent}>Read More</button>}
+{
+  !showMore && <button onClick={toggleContent}>Read More</button>;
+}
 ```
 
 Sometimes, we want to show a radically different UI based on a condition.
@@ -908,19 +909,19 @@ Based on the `loading` variable, display either a simple loading message or a 
 
 ```jsx
 const App = () => {
-	const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-	return (
-		<div>
-			{loading ? (
-				<p>Loading your data ...</p>
-			) : (
-				<div>
-					<h1>Your Data</h1>
-				</div>
-			)}
-		</div>
-	);
+  return (
+    <div>
+      {loading ? (
+        <p>Loading your data ...</p>
+      ) : (
+        <div>
+          <h1>Your Data</h1>
+        </div>
+      )}
+    </div>
+  );
 };
 ```
 
@@ -936,46 +937,40 @@ Add a conditional statement to check if the passed property `authenticated` is
 
 ```jsx
 const App = () => {
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(undefined);
 
-	if (!props.authenticated) {
-		return (
-			<div>
-				<h1>Not authenticated</h1>
-				<p>Please log in first</p>
-				<button>Log in</button>
-			</div>
-		);
-	}
+  if (!props.authenticated) {
+    return (
+      <div>
+        <h1>Not authenticated</h1>
+        <p>Please log in first</p>
+        <button>Log in</button>
+      </div>
+    );
+  }
 
-	if (loading) {
-		return <p>Loading your data ...</p>;
-	}
-	
-	if (error) {
-		return (
-			<div>
-				<p>Error loading your data.</p>
-				<button>Try again</button>
-			</div>
-		);
-	}
-	
-	return (
-		<div>
-			<h1>Your Data</h1>
-			<p>The first data point ...</p>
-		    <p>We also want to highlight ...</p>
-	    </div>
-	);
+  if (loading) {
+    return <p>Loading your data ...</p>;
+  }
+
+  if (error) {
+    return (
+      <div>
+        <p>Error loading your data.</p>
+        <button>Try again</button>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1>Your Data</h1>
+      <p>The first data point ...</p>
+      <p>We also want to highlight ...</p>
+    </div>
+  );
 };
 ```
 
 # Fragments
-
-
-
-
-
-
