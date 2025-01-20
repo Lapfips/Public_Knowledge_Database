@@ -117,7 +117,7 @@ const Welcome = () => {
 export const Goodbye = () => {
   return (
     <div>
-      <p>Thank for</p>
+      <p>Thank you</p>
       <p>See you next time</p>
     </div>
   );
