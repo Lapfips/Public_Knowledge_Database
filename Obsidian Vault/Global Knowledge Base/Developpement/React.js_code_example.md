@@ -45,6 +45,9 @@ root.render(<App />);
 /* Import React in each file to use it and useState to use state variables */
 import React, { useState } from "react";
 
+/* Import the Stylesheet */
+import "./App.css";
+
 /* Import Welcome as a default exported component and Goodbye from the Messages.jsx file */
 import Welcome, { Goodbye } from "./Messages";
 /* Import Year as a default exported component and Name and Mood from the Counts.jsx file */
@@ -108,6 +111,9 @@ export default App;
 /* Import react in each file to use it */
 import React from "react";
 
+/* Import the Stylesheet */
+import "./Messages.css";
+
 /* Create a Welcome function that returns a JSX component with a paragrah inside */
 const Welcome = () => {
   return <p>Welcome dear customer</p>;
@@ -132,6 +138,9 @@ export default Welcome;
 ```jsx
 /* Import react in each file to use it */
 import React from "react";
+
+/* Import the Stylesheet */
+import "./Counts.css";
 
 /* Create a function that returns the year based on the user's age */
 const Year = (props) => {
@@ -163,6 +172,9 @@ export default Year;
 ```jsx
 /* Import React in each file to use it and useState to use state variables */
 import React, { useState } from "react";
+
+/* Import the Stylesheet */
+import "./Buttons.css";
 
 /* Create a function that render a JSX component with a button and a paragraph to display a secret message */
 const Reveal = () => {
