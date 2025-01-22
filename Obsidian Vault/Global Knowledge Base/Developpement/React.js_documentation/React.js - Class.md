@@ -1146,3 +1146,75 @@ const Guest = (props) => {
 
 # Complex Properties
 
+Let's explore complex property types. We'll start with arrays.
+
+If the array's values are of type string, we can render them directly. Notice that there is no whitespace between the rendered elements.
+
+However, there are much better ways to render arrays in React. We'll learn about them soon.
+
+Objects can also be passed as properties.
+
+We can pass the object directly instead of saving it in a variable first.
+
+Here, we see two opening and two closing curly braces. It might look odd, but both JSX and objects use curly braces.
+
+```jsx
+const App = () => {
+	return (
+		<div>
+		    <img src="https://mimo.app/i/earth.png" />
+		    <Greeting
+			    name="Adam"
+		        location="Eden"
+		        age={69}
+		        nice={true}
+		        friends={["Eve", "Snake"]}
+		        description={{ title: "forager", hobby: "napper" }}
+			/>
+		</div>
+	);
+};
+```
+
+We can't directly render objects, but we can log them.
+
+We can use dot notation to access the values of the `description` object, which is part of the `props` object.
+
+# Arrays in React
+
+In React, arrays enable dynamic list rendering and easy data sharing between components, making UIs more interactive and responsive.
+
+Let's learn how to use them in React.
+
+Similar to passing simple values, we can pass an array as a prop to a component.
+
+Logging the array to the console can help us understand its structure and debug any issues.
+
+React allows us to display arrays directly in our JSX by mapping over them to create elements for each item.
+
+Start by creating an unordered list element to serve as a wrapper for the list items.
+
+We can use the ES6 array method `map` to iterate over all elements inside an embedded expression.
+
+We define the element inside the parameter of the `map` function.
+
+Define `student` as the parameter to allow us to later access the individual element by the variable `student`.
+
+We want to return a `li` element for every element of the `students` that can be rendered by React.
+
+Inside the `li` element, we can use another embedded expression to render the array's element.
+
+```jsx
+const House = ({ students }) => {
+	console.log(students);
+
+	return (
+	    <ul>
+		    {students.map((student) => (
+			    <li>{student}</li>
+	        ))}
+		</ul>
+	);
+};
+```
+
