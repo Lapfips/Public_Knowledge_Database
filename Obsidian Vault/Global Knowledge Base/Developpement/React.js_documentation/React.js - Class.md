@@ -1209,10 +1209,10 @@ const House = ({ students }) => {
 	console.log(students);
 
 	return (
-	    <ul>
-		    {students.map((student) => (
-			    <li>{student}</li>
-	        ))}
+		<ul>
+			{students.map((student) => (
+				<li>{student}</li>
+		    ))}
 		</ul>
 	);
 };
